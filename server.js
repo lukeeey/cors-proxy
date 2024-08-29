@@ -26,7 +26,7 @@ app.all("*", async (req, res, next) => {
             },
             body: req.method !== "GET" ? JSON.stringify(req.body) : undefined,
         });
-        
+
         const body = await response.json();
         return res.status(response.status).json(body);
     } catch (e) {
@@ -50,3 +50,5 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log("Proxy server listening on port " + port);
 });
+
+module.exports = app;
